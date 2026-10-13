@@ -1,0 +1,34 @@
+{
+  "common": {
+    "appName": "Nexora Digital Menu",
+    "language": "اللغة",
+    "arabic": "العربية",
+    "english": "English"
+  },
+  "home": {
+    "title": "مرحبا بك في Nexora",
+    "subtitle": "المرحلة الأولى: الهيكل الأساسي جاهز."
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "signup": "إنشاء حساب",
+    "forgot": "نسيت كلمة المرور",
+    "reset": "إعادة تعيين كلمة المرور"
+  },
+  "owner": {
+    "dashboard": "لوحة المطعم",
+    "menu": "المنيو",
+    "categories": "الأصناف",
+    "products": "المنتجات",
+    "appearance": "المظهر",
+    "billing": "الاشتراك والدفع"
+  },
+  "publicMenu": {
+    "title": "منيو المطعم",
+    "placeholder": "هذه صفحة منيو عامة تجريبية في Stage 1"
+  },
+  "admin": {
+    "title": "لوحة المشرف",
+    "subtitle": "مسارات المشرف بدون locale مع لغة عبر cookie"
+  }
+}
