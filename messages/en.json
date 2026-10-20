@@ -2,33 +2,64 @@
   "common": {
     "appName": "Nexora Digital Menu",
     "language": "Language",
-    "arabic": "العربية",
+    "arabic": "Arabic",
     "english": "English"
   },
   "home": {
     "title": "Welcome to Nexora",
-    "subtitle": "Stage 1 foundation is ready."
+    "subtitle": "Create a polished digital menu for your restaurant."
   },
   "auth": {
-    "login": "Login",
-    "signup": "Sign up",
-    "forgot": "Forgot password",
-    "reset": "Reset password"
+    "login": "Sign in",
+    "signup": "Create account",
+    "forgot": "Forgot password?",
+    "reset": "Reset password",
+    "loginDescription": "Sign in to manage your digital menu.",
+    "signupDescription": "Create your account and start setting up your restaurant.",
+    "fullName": "Full name",
+    "email": "Email address",
+    "password": "Password",
+    "passwordHint": "Use at least 8 characters.",
+    "continue": "Continue",
+    "loggingIn": "Signing in...",
+    "creatingAccount": "Creating your account...",
+    "noAccount": "New to Nexora?",
+    "haveAccount": "Already have an account?",
+    "loginSuccess": "You are signed in.",
+    "signupSuccess": "Your account has been created.",
+    "emailConfirmation": "Check your inbox to confirm your email, then sign in.",
+    "invalidCredentials": "The email or password is incorrect.",
+    "emailNotConfirmed": "Confirm your email address before signing in.",
+    "emailAlreadyRegistered": "This email is already registered. Try signing in.",
+    "weakPassword": "Choose a stronger password with at least 8 characters.",
+    "invalidEmail": "Enter a valid email address.",
+    "genericError": "We couldn't complete your request. Please try again.",
+    "adminRequired": "This account does not have administrator access."
   },
   "owner": {
-    "dashboard": "Owner Dashboard",
-    "menu": "Menu",
+    "dashboard": "Dashboard",
+    "menu": "Menu link",
     "categories": "Categories",
     "products": "Products",
     "appearance": "Appearance",
-    "billing": "Billing"
+    "billing": "Billing",
+    "welcome": "Welcome back",
+    "navigation": "Navigation",
+    "logout": "Sign out",
+    "openMenu": "Open navigation",
+    "account": "Account"
   },
   "publicMenu": {
-    "title": "Restaurant Menu",
-    "placeholder": "This is a public menu placeholder page for Stage 1"
+    "title": "Restaurant menu",
+    "placeholder": "This is a public menu placeholder page."
   },
   "admin": {
-    "title": "Admin Panel",
-    "subtitle": "Admin routes are locale-free with cookie-based language"
+    "title": "Admin panel",
+    "subtitle": "Manage Nexora",
+    "overview": "Overview",
+    "users": "Users",
+    "logout": "Sign out",
+    "language": "Language",
+    "unauthorized": "You don't have permission to view this page."
   }
 }

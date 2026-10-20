@@ -1,35 +1,70 @@
 import Link from 'next/link';
+import {notFound, redirect} from 'next/navigation';
 import {getTranslations} from 'next-intl/server';
+import {AuthForm} from '@/components/auth/auth-form';
+import {AuthShell} from '@/components/auth/auth-shell';
+import {getSafeDashboardRedirect, isAppLocale} from '@/lib/auth/redirect';
+import {getUser} from '@/lib/supabase/server';
 
-export default async function LoginPage({params}: {params: Promise<{locale: string}>}) {
-  const {locale} = await params;
-  const t = await getTranslations();
+export default async function LoginPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{locale: string}>;
+  searchParams: Promise<{next?: string | string[]}>;
+}) {
+  const [{locale: requestedLocale}, query] = await Promise.all([params, searchParams]);
+  if (!isAppLocale(requestedLocale)) notFound();
+  const locale = requestedLocale;
+  const nextPath = Array.isArray(query.next) ? query.next[0] : query.next;
+  const destination = getSafeDashboardRedirect(locale, nextPath);
+
+  if (await getUser()) {
+    redirect(destination);
+  }
+
+  const t = await getTranslations('auth');
 
   return (
-    <main className="mx-auto grid min-h-screen w-full max-w-md place-items-center px-4 py-10">
-      <section className="w-full rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-        <h1 className="mb-5 text-2xl font-bold text-slate-900">{t('auth.login')}</h1>
-        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-          <label className="block space-y-1">
-            <span className="text-sm text-slate-600">Email</span>
-            <input type="email" className="w-full rounded-lg border border-slate-300 px-3 py-2" />
-          </label>
-          <label className="block space-y-1">
-            <span className="text-sm text-slate-600">Password</span>
-            <input type="password" className="w-full rounded-lg border border-slate-300 px-3 py-2" />
-          </label>
-          <button type="submit" className="w-full rounded-lg bg-slate-900 px-4 py-2.5 text-white">{t('auth.login')}</button>
-        </form>
-
-        <div className="mt-4 flex items-center justify-between text-sm">
-          <Link className="text-indigo-600 hover:underline" href={`/${locale}/forgot-password`}>
-            {t('auth.forgot')}
-          </Link>
-          <Link className="text-slate-600 hover:underline" href={`/${locale}/signup`}>
-            {t('auth.signup')}
-          </Link>
-        </div>
-      </section>
-    </main>
+    <AuthShell
+      locale={locale}
+      currentPath="login"
+      title={t('login')}
+      description={t('loginDescription')}
+      switchHref={`/${locale}/signup`}
+      switchPrompt={t('noAccount')}
+      switchLabel={t('signup')}
+    >
+      <AuthForm
+        mode="login"
+        locale={locale}
+        nextPath={destination}
+        labels={{
+          fullName: t('fullName'),
+          email: t('email'),
+          password: t('password'),
+          passwordHint: t('passwordHint'),
+          submit: t('login'),
+          pending: t('loggingIn'),
+          emailConfirmation: t('emailConfirmation'),
+          errors: {
+            invalidCredentials: t('invalidCredentials'),
+            emailNotConfirmed: t('emailNotConfirmed'),
+            emailAlreadyRegistered: t('emailAlreadyRegistered'),
+            weakPassword: t('weakPassword'),
+            invalidEmail: t('invalidEmail'),
+            genericError: t('genericError'),
+          },
+        }}
+      />
+      <div className="mt-4 text-center text-sm">
+        <Link
+          className="font-semibold text-slate-500 underline-offset-4 hover:text-[#1357d5] hover:underline"
+          href={`/${locale}/forgot-password`}
+        >
+          {t('forgot')}
+        </Link>
+      </div>
+    </AuthShell>
   );
 }

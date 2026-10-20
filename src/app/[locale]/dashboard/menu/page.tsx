@@ -1,8 +1,12 @@
 export default function MenuSkeletonPage() {
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-      <h1 className="text-2xl font-bold text-slate-900">Menu Link Skeleton</h1>
-      <p className="mt-2 text-slate-600">Stage 1 placeholder only (public publish controls later).</p>
+    <section className="rounded-[20px] border border-slate-200/80 bg-white px-6 py-7 shadow-sm sm:px-8 sm:py-8">
+      <h1 className="text-[26px] font-bold leading-tight text-slate-950 sm:text-[28px]">
+        Menu Link Skeleton
+      </h1>
+      <p className="mt-3 text-base leading-7 text-slate-600 sm:text-lg">
+        Stage 1 placeholder only (public publish controls later).
+      </p>
     </section>
   );
 }
